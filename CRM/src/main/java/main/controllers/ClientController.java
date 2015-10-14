@@ -25,9 +25,9 @@ public class ClientController {
 	    }
 	    
 	    @RequestMapping(value="/client", method=RequestMethod.POST)
-	    public Boolean createClient(@RequestBody Client client) {
+	    public Integer createClient(@RequestBody Client client) {
 	    	
-	    	Boolean retorno = ClientRepository.createClient(client);
+	    	Integer retorno = ClientRepository.createClient(client);
 	    	return retorno;
 	    }
 	    

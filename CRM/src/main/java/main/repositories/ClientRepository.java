@@ -32,16 +32,18 @@ public class ClientRepository extends DatabaseConnection{
 		}
 	}
 	
-	public static Boolean createClient(Client client)
+	public static Integer createClient(Client client)
 	{
 		try {
 						
 			em.getTransaction().begin();
 			em.persist(client);
 			em.getTransaction().commit();
-			return true;
+			Integer id = client.getId();
+			return id;
 		} catch (Exception e) {
-			throw e;
+			return -1;
+			//throw e;
 			// TODO: handle exception
 		}
 		
@@ -71,7 +73,9 @@ public class ClientRepository extends DatabaseConnection{
 			return true;
 			
 		} catch (Exception e) {
-			throw e;
+			return false;
+			//throw e;
+			// TODO: handle exception
 		}
 		
 		
@@ -89,7 +93,7 @@ public class ClientRepository extends DatabaseConnection{
 			return true;
 			
 		} catch (Exception e) {
-			throw e;
+			return false;
 			
 		}
 		
