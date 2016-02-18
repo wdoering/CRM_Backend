@@ -30,7 +30,7 @@ public class Client implements Serializable {
 	private String addressNumber;
 	private String neighborhood;
 	private String city;
-	private Integer stateID; //FK to the states ENTITY
+	private Integer stateID; //FK to the states ENTITY... but for now it's just going to be an Enum
 	private String postalCode;
 	private String email;
 

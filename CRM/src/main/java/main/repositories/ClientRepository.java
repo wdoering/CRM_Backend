@@ -1,14 +1,7 @@
 package main.repositories;
-import java.sql.Connection;
 import java.util.List;
-
-import javax.persistence.EntityTransaction;
-import javax.persistence.criteria.CriteriaDelete;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-
-import org.eclipse.persistence.internal.sessions.remote.SequencingFunctionCall.GetNextValue;
-
 import db.DatabaseConnection;
 import main.models.Client;
 
@@ -27,9 +20,11 @@ public class ClientRepository extends DatabaseConnection{
 			
 			return clientes;
 			
-		} catch (Exception e) {
+		} 
+		catch (Exception e) {
 			throw e;
 		}
+		
 	}
 	
 	public static Integer createClient(Client client)
@@ -42,6 +37,7 @@ public class ClientRepository extends DatabaseConnection{
 			Integer id = client.getId();
 			return id;
 		} catch (Exception e) {
+			//so the front end knows that something went wrong
 			return -1;
 			//throw e;
 			// TODO: handle exception
