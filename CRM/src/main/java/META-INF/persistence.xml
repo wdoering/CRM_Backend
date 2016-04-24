@@ -9,6 +9,8 @@
 		<class>main.models.ProductSizeCategory</class>
 		<class>main.models.ProductSize</class>
 		<class>main.models.Manufacturer</class>
+		<class>main.models.ProductType</class>
+		<class>main.models.Price</class>
 		
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>

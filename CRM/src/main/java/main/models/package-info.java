@@ -1,3 +1,4 @@
+package main.models;
 /**
  * 
  */
@@ -8,4 +9,3 @@
  * Nothing is done manually in the DB.
  * @since 1.0
  */
-package main.models;

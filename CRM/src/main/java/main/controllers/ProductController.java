@@ -14,10 +14,17 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProductController {
     @RequestMapping(value="/product", method=RequestMethod.GET)
     public List<Product> product(@RequestParam(value="id", defaultValue="0") Integer id) {
-
-    	ProductRepository pr = new ProductRepository();
-        List<Product> productList = pr.getProducts();
-    	return productList;
+    	try {
+    		ProductRepository pr = new ProductRepository();
+            List<Product> productList = pr.getProducts();
+        	return productList;
+		} catch (Exception e) {
+			// TODO: handle exception
+			
+			System.out.println(e.getMessage());
+			return null;
+		}
+    	
 
     }
     

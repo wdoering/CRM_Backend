@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
@@ -22,32 +23,28 @@ public class Product implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	Integer id;
+	
 	@Column(nullable = false)
 	private String description;
+	
 	@ManyToOne
 	@JoinColumn(name = "categoryId")
 	private ProductSizeCategory productSizeCategory;
 	
 	//brandId
-	@OneToOne
-	@JoinColumn(name = "manufacturerId", unique=true, nullable=false, updatable=false)
-	private Manufacturer manufacturerId;
-	
-	
-	//	TODO: create an FK to a product_type table: shoe, shirt TO BE CREATED
-	@Column(nullable = false)
-	private Integer typeId;
-	
-	public Product(){
-		
-	}
+	@ManyToOne
+	@JoinColumn(name = "manufacturerId", nullable=false, updatable=false)
+	private Manufacturer manufacturer;
 
-	public Integer getId() {
+	public Integer getId(){
 		return id;
 	}
+	public String getDescription() {
+		return description;
+	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public ProductSizeCategory getProductSizeCategory() {
@@ -58,6 +55,14 @@ public class Product implements Serializable{
 		this.productSizeCategory = productSizeCategory;
 	}
 
+	public Manufacturer getManufacturer() {
+		return manufacturer;
+	}
+
+	public void setManufacturer(Manufacturer manufacturer) {
+		this.manufacturer = manufacturer;
+	}
+
 	public Integer getTypeId() {
 		return typeId;
 	}
@@ -65,5 +70,15 @@ public class Product implements Serializable{
 	public void setTypeId(Integer typeId) {
 		this.typeId = typeId;
 	}
+
+	//	TODO: create an FK to a product_type table: shoe, shirt 
+	@Column(nullable = false)
+	private Integer typeId;
+	
+	// TODO: FK to price table
+	public Product(){
+		
+	}
+
 	
 }

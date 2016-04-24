@@ -14,7 +14,20 @@ public class Manufacturer implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	Integer manufacturerId;
+	Integer Id;
+	
 	@Column(nullable = false)
 	private String name;
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Integer getId() {
+		return Id;
+	}
 }
