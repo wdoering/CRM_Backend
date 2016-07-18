@@ -50,8 +50,6 @@ public class ProductRepository extends DatabaseConnection {
 			em.getTransaction().begin();
 			
 			currentProduct.setDescription(product.getDescription());
-//			ProductSizeCategory currentPSC = em.find(ProductSizeCategory.class, product.getProductSizeCategory().getId());
-//			currentProduct.setProductSizeCategory(currentPSC);
 			currentProduct.setProductSizeCategory(product.getProductSizeCategory());
 			
 			currentProduct.setManufacturer(product.getManufacturer());
