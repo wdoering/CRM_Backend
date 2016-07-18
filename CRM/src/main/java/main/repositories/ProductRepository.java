@@ -5,6 +5,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
 import main.models.Product;
+import main.models.ProductSizeCategory;
 import db.DatabaseConnection;
 
 public class ProductRepository extends DatabaseConnection {
@@ -36,7 +37,7 @@ public class ProductRepository extends DatabaseConnection {
 			return id;
 		} catch (Exception e) {
 			// so the front end knows that something went wrong
-			return -1;
+			throw e;
 			// throw e;
 			// TODO: handle exception
 		}
@@ -45,19 +46,24 @@ public class ProductRepository extends DatabaseConnection {
 	public static Boolean updateProduct(Product product) {
 		try {
 			Product currentProduct = em.find(Product.class, product.getId());
-
+			
 			em.getTransaction().begin();
-
-			currentProduct.setTypeId(product.getTypeId());
-			currentProduct.setProductSizeCategory(product
-					.getProductSizeCategory());
+			
+			currentProduct.setDescription(product.getDescription());
+//			ProductSizeCategory currentPSC = em.find(ProductSizeCategory.class, product.getProductSizeCategory().getId());
+//			currentProduct.setProductSizeCategory(currentPSC);
+			currentProduct.setProductSizeCategory(product.getProductSizeCategory());
+			
+			currentProduct.setManufacturer(product.getManufacturer());
+			currentProduct.setProductType(product.getProductType());
+			
 			em.getTransaction().commit();
-
+			
 			return true;
 
 		} catch (Exception e) {
-			return false;
-			// throw e;
+			
+			throw e;
 			// TODO: handle exception
 		}
 

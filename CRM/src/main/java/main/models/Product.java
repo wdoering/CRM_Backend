@@ -2,6 +2,7 @@ package main.models;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,15 +28,19 @@ public class Product implements Serializable{
 	@Column(nullable = false)
 	private String description;
 	
-	@ManyToOne
-	@JoinColumn(name = "categoryId")
+	@ManyToOne(cascade=CascadeType.PERSIST)
+	@JoinColumn(name = "sizeCategoryId", nullable=false)
 	private ProductSizeCategory productSizeCategory;
 	
-	//brandId
-	@ManyToOne
-	@JoinColumn(name = "manufacturerId", nullable=false, updatable=false)
+	@ManyToOne(cascade=CascadeType.PERSIST)
+	@JoinColumn(name = "manufacturerId", nullable=false)
 	private Manufacturer manufacturer;
 
+	@ManyToOne(cascade=CascadeType.PERSIST)
+	@JoinColumn(name = "productTypeId", nullable=false)
+	private ProductType productType;
+	
+	
 	public Integer getId(){
 		return id;
 	}
@@ -62,19 +67,15 @@ public class Product implements Serializable{
 	public void setManufacturer(Manufacturer manufacturer) {
 		this.manufacturer = manufacturer;
 	}
-
-	public Integer getTypeId() {
-		return typeId;
-	}
-
-	public void setTypeId(Integer typeId) {
-		this.typeId = typeId;
-	}
-
-	//	TODO: create an FK to a product_type table: shoe, shirt 
-	@Column(nullable = false)
-	private Integer typeId;
 	
+	public ProductType getProductType() {
+		return productType;
+	}
+
+	public void setProductType(ProductType ProductType) {
+		this.productType = ProductType;
+	}
+
 	// TODO: FK to price table
 	public Product(){
 		

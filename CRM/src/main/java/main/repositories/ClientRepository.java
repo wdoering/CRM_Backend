@@ -19,7 +19,6 @@ public class ClientRepository extends DatabaseConnection{
 			List<Client> clientes = em.createQuery(q).getResultList();
 			
 			return clientes;
-			
 		} 
 		catch (Exception e) {
 			throw e;
@@ -74,9 +73,6 @@ public class ClientRepository extends DatabaseConnection{
 			// TODO: handle exception
 		}
 		
-		
-		
-		
 	}
 
 	public static Boolean deleteClient(Integer id) {
@@ -94,8 +90,6 @@ public class ClientRepository extends DatabaseConnection{
 		}
 		
 	}
-	
-	
 	
 }
 

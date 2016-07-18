@@ -1,4 +1,5 @@
 package main.models;
+
 import java.io.Serializable;
 
 import javax.persistence.Column;
@@ -8,18 +9,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class ProductSizeCategory implements Serializable{
-
+public class ProductType implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)  
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	Integer id;
 	
-	@Column(nullable=false)
+	@Column(nullable = false)
 	private String description;
 
 	public String getDescription() {
@@ -33,5 +33,6 @@ public class ProductSizeCategory implements Serializable{
 	public Integer getId() {
 		return id;
 	}
+	
 	
 }
