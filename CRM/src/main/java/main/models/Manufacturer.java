@@ -18,7 +18,7 @@ public class Manufacturer implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	Integer Id;
+	Integer id;
 	
 	@Column(nullable = false)
 	private String name;
@@ -32,7 +32,7 @@ public class Manufacturer implements Serializable{
 	}
 
 	public Integer getId() {
-		return Id;
+		return id;
 	}
 	
 	

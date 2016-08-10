@@ -55,6 +55,7 @@ public class ProductRepository extends DatabaseConnection {
 			currentProduct.setManufacturer(product.getManufacturer());
 			currentProduct.setProductType(product.getProductType());
 			
+			em.merge(currentProduct);
 			em.getTransaction().commit();
 			
 			return true;
